@@ -47,4 +47,10 @@ A convenient way to get a relevant background for your desktop.
 #   - SouthEast
 #   - SouthWest
 ./stellar -l <location> <filename>
+
+# Add verbosity level to output.
+./stellar -v <filename>
+
+# Debug level verbosity.
+./stellar -v -v -v <filename>
 ```

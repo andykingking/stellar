@@ -9,21 +9,31 @@ defmodule Stellar do
   @logo %Image{path: "assets/MYOB_logo_mono.png"}
   @aliases [
     b: :background,
-    l: :location
+    l: :location,
+    v: :verbose
   ]
   @options [
     background: :string,
-    location: :string
+    location: :string,
+    verbose: :count
   ]
 
   @doc """
   The main function for the application.
   """
   def main(args) do
-    Logger.debug("Application started")
     parsed_args = OptionParser.parse(args, aliases: @aliases, strict: @options)
 
-    resulting_image_path = elem(parsed_args, 1) |> List.first
+    case parsed_args |> elem(0) |> Keyword.get(:verbose) do
+      1 -> Logger.configure(level: :warn)
+      2 -> Logger.configure(level: :info)
+      3 -> Logger.configure(level: :debug)
+      _ -> Logger.configure(level: :error)
+    end
+
+    Logger.debug("Application started")
+
+    resulting_image_path = parsed_args |> elem(1) |> List.first
 
     background =
       parsed_args
