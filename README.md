@@ -26,6 +26,7 @@ A convenient way to get a relevant background for your desktop.
   4. Run the application:
 
     ```bash
+    # <filename> is the name of the output file.
     ./stellar <filename>
     ```
 
