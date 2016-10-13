@@ -14,6 +14,10 @@ A convenient way to get a relevant background for your desktop.
   2. Install dependencies:
 
     ```bash
+    # Install Imagemagick.
+    brew install imagemagick
+
+    # Install Elixir/Erlang packages.
     mix deps.get
     ```
 
