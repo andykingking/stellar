@@ -31,7 +31,7 @@ A convenient way to get a relevant background for your desktop.
 
 ## Options
 
-    ```bash
-    # Uses the given URL as the background image.
-    ./stellar -b <url> <filename>
-    ```
+```bash
+# Uses the given URL as the background image.
+./stellar -b <url> <filename>
+```
