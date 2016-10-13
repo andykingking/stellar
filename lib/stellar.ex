@@ -8,10 +8,12 @@ defmodule Stellar do
 
   @logo %Image{path: "assets/MYOB_logo_mono.png"}
   @aliases [
-    b: :background
+    b: :background,
+    l: :location
   ]
   @options [
-    background: :string
+    background: :string,
+    location: :string
   ]
 
   @doc """
@@ -29,13 +31,29 @@ defmodule Stellar do
       |> Keyword.get(:background)
       |> fetch_background
 
+    logo_location =
+      parsed_args
+      |> elem(0)
+      |> Keyword.get(:location)
+
     @logo
-    |> Composite.compose(background)
+    |> compose(background, logo_location)
     |> Map.get(:path)
     |> File.copy!(resulting_image_path)
 
     Logger.info("Saved image to #{resulting_image_path}")
     Logger.debug("Application complete")
+  end
+
+  defp compose(logo, background, location) when is_nil(location) do
+    Logger.debug("Using default logo location")
+
+    Composite.compose(logo, background)
+  end
+  defp compose(logo, background, location) do
+    Logger.debug("Using supplied logo location: #{location}")
+
+    Composite.compose(logo, background, location)
   end
 
   defp fetch_background(image_url) when is_nil(image_url) do
@@ -44,6 +62,8 @@ defmodule Stellar do
     |> fetch_background
   end
   defp fetch_background(image_url) do
+    Logger.debug("Using background image URL: #{image_url}")
+
     extension = Path.extname(image_url)
 
     image_url

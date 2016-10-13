@@ -7,10 +7,10 @@ defmodule Composite do
   @doc """
   Performs the compose use case.
   """
-  def compose(logo, background) do
+  def compose(logo, background, overlay_gravity \\ "SouthWest") do
     logo
     |> shrink_to_fit(background)
-    |> Image.overlay(background)
+    |> Image.overlay(background, overlay_gravity)
   end
 
   defp shrink_to_fit(logo, background) do

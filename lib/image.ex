@@ -68,13 +68,13 @@ defmodule Image do
   @doc """
   Overlays an image onto another image.
   """
-  def overlay(foreground, background) do
+  def overlay(foreground, background, gravity) do
     Logger.debug("Performing image composition")
 
     new_image = %Image{path: Mogrify.temporary_path_for(foreground)}
     System.cmd("composite", [
       "-gravity",
-      "SouthWest",
+      gravity,
       foreground.path,
       background.path,
       new_image.path

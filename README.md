@@ -34,4 +34,17 @@ A convenient way to get a relevant background for your desktop.
 ```bash
 # Uses the given URL as the background image.
 ./stellar -b <url> <filename>
+
+# Uses the given logo location.
+# Valid locations:
+#   - North
+#   - NorthEast
+#   - NorthWest
+#   - West
+#   - Center
+#   - East
+#   - South
+#   - SouthEast
+#   - SouthWest
+./stellar -l <location> <filename>
 ```
