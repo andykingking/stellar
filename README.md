@@ -28,3 +28,10 @@ A convenient way to get a relevant background for your desktop.
     ```bash
     ./stellar <filename>
     ```
+
+## Options
+
+    ```bash
+    # Uses the given URL as the background image.
+    ./stellar -b <url> <filename>
+    ```
